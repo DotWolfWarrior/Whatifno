@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bayes Tree generater</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.2.5/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.2.5/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-firestore.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-functions.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-storage.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-analytics.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-remote-config.js"></script>
+    <script defer src="/__/firebase/8.2.5/firebase-performance.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  </head>
+  <body>
+  
+    <table border=true>
+      <tbody>
+        <tr>
+          <td rowspan="2"><input id="pop" type="number"></td>
+          <td><input id="amount" type="number"></td>
+          <td id="popamount"></td>
+        </tr>
+        <tr>
+          <td id="inveramount"></td>
+          <td id="popinveramount"></td>
+        </tr>
+
+        <tr>
+          <td rowspan="2" id="inverpop"></td>
+          <td><input id="inver" type="number"></td>
+          <td id="inverpopinver"></td>
+        </tr>
+        <tr>
+          <td id="inverinver"></td>
+          <td id="inverinverinver"></td>
+        </tr>
+      </tbody>
+      </table>
+      <button onclick="generate()">generate</button>
+      <table border="true">
+        <tbody></tbody>
+          <tr>
+            <td rowspan="2">p(A)</td>
+            <td>p( B | A )</td>
+            <td>p( A and B )</td>
+          </tr>
+          <tr>
+            <td>p( Not B | A)</td>
+            <td>p( A and Not B )</td>
+          </tr>
+          <tr>
+            <td rowspan="2">p(Not A)</td>
+            <td>p( B | Not A )</td>
+            <td>p( Not A and B )</td>
+          </tr>
+          <tr>
+            <td>p(Not B | Not A)</td>
+            <td>p( Not A and Not B )</td>
+          </tr>
+        </tbody>
+        </table>
+        <p id="check"></p>
+        <p>p( A and B ) + p( Not A and B ) = p(B)</p>
+        <p id="b"></p>
+        <p>p( A and Not B ) + p( Not A and Not B ) = p(Not B)</p>
+        <p id="notb"></p>
+        <a onclick="solve()">p( B | A )*p(A) / p(B) = p( A | B )</a>
+      <script src="bayes.js"></script>
+  </body>
+</html>
